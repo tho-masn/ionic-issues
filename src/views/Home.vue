@@ -5,42 +5,66 @@
         <ion-title>Blank</ion-title>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Blank</ion-title>
         </ion-toolbar>
       </ion-header>
-    
+
       <div id="container">
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+        <ion-select
+          @ion-change="onChange($event.target.value)"
+          placeholder="Select option"
+          interface="popover"
+        >
+          <ion-select-option
+            value="test1"
+          >
+            test1
+          </ion-select-option>
+
+          <ion-select-option
+            value="test2"
+          >
+            test2
+          </ion-select-option>
+        </ion-select>
       </div>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+<script>
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonSelect, IonSelectOption } from '@ionic/vue';
 
-export default defineComponent({
-  name: 'Home',
+export default {
   components: {
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonSelect,
+    IonSelectOption
+  },
+
+  methods: {
+    onChange(value) {
+      console.log(value)
+    }
   }
-});
+};
 </script>
 
 <style scoped>
 #container {
   text-align: center;
-  
+
   position: absolute;
   left: 0;
   right: 0;
@@ -56,9 +80,9 @@ export default defineComponent({
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
+
   color: #8c8c8c;
-  
+
   margin: 0;
 }
 
