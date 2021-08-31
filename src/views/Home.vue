@@ -8,8 +8,17 @@
 
     <ion-content :fullscreen="true">
       <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <div
+          @click="setModalOpen(true)"
+        >
+          Open modal
+        </div>
+
+        <ModalExample
+          v-if="isModalOpen"
+          @did-dismiss="setModalOpen(false)"
+        />
+
       </div>
     </ion-content>
   </ion-page>
@@ -17,6 +26,7 @@
 
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import ModalExample from '@/components/ModalExample.vue'
 
 export default {
   components: {
@@ -24,7 +34,22 @@ export default {
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    ModalExample,
+  },
+
+  data () {
+    return {
+      isPopoverOpen: false,
+      popoverEvent: null,
+      isModalOpen: false
+    }
+  },
+
+  methods: {
+    setModalOpen(value) {
+      this.isModalOpen = value
+    }
   }
 };
 </script>
