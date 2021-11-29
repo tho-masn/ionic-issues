@@ -10,29 +10,10 @@
           <ion-title>Modal</ion-title>
 
           <ion-buttons
-            v-if="$slots.headerLeft"
-            slot="start"
-          >
-            <slot
-              name="headerLeft"
-            />
-          </ion-buttons>
-
-          <ion-buttons
             slot="end"
           >
-            <ion-button
-              v-if="!$slots.headerRight"
-              @click="closeModal"
-            >
-              <ion-icon
-                :icon="iconClose"
-              />
-            </ion-button>
-
-            <slot
-              v-if="$slots.headerRight"
-              name="headerRight"
+            <ion-icon
+              :icon="iconClose"
             />
           </ion-buttons>
         </ion-toolbar>
@@ -56,7 +37,6 @@ import {
   IonTitle,
   IonContent,
   IonButtons,
-  IonButton,
   IonIcon,
 } from '@ionic/vue'
 import { close as iconClose } from 'ionicons/icons'
@@ -70,7 +50,6 @@ export default {
     IonTitle,
     IonContent,
     IonButtons,
-    IonButton,
     IonIcon
   },
 
