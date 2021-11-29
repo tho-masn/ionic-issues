@@ -5,40 +5,94 @@
         <ion-title>Blank</ion-title>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <div @click="isModalOpen = true">
+        Open Modal
       </div>
+
+      {{isModalOpen}}
+
+      <BaseModal
+        v-if="isModalOpen"
+        @click:close="isModalOpen = false"
+      >
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+        test<br>
+
+        <div
+          slot="fixed"
+        >
+          <div
+            style="width: 50px; height: 50px; background-color: yellow;"
+          />
+        </div>
+      </BaseModal>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import BaseModal from '@/views/BaseModal'
 
 export default {
   components: {
+    BaseModal,
     IonContent,
     IonHeader,
     IonPage,
     IonTitle,
     IonToolbar
+  },
+
+  data () {
+    return {
+      isModalOpen: false
+    }
   }
-}
+};
 </script>
 
 <style scoped>
 #container {
   text-align: center;
-  
+
   position: absolute;
   left: 0;
   right: 0;
@@ -54,9 +108,9 @@ export default {
 #container p {
   font-size: 16px;
   line-height: 22px;
-  
+
   color: #8c8c8c;
-  
+
   margin: 0;
 }
 
