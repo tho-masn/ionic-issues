@@ -12,17 +12,17 @@
           <ion-title size="large">Blank</ion-title>
         </ion-toolbar>
       </ion-header>
-    
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+
+      <pre>
+        {{fileInfos}}
+      </pre>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { Filesystem, Directory } from '@capacitor/filesystem'
 
 export default {
   components: {
@@ -31,14 +31,28 @@ export default {
     IonPage,
     IonTitle,
     IonToolbar
+  },
+
+  data () {
+    return {
+      fileInfos: []
+    }
+  },
+
+  async ionViewDidEnter () {
+    const fileInfos = (await Filesystem.readdir({
+      path: '',
+      directory: Directory.Cache
+    }))
+      .files
+
+    this.fileInfos = fileInfos
   }
 }
 </script>
 
 <style scoped>
 #container {
-  text-align: center;
-  
   position: absolute;
   left: 0;
   right: 0;
